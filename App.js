@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Button, StyleSheet, Image, Alert } from 'react-native';
 import RNFS from 'react-native-fs';
 
@@ -25,6 +25,11 @@ const App = () => {
       setStatus(`Error copying image: ${error.message}`);
     }
   };
+
+  useEffect(() => {
+    // Automatically copy when the component (directory) is loaded
+    copyImageToTemp();
+  }, []);
 
   return (
     <View style={styles.container}>
